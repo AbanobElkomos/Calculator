@@ -36,6 +36,9 @@ public class calculate extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculate);
 
+
+        mValueOne = (float) Double.NaN;
+
         editText = (EditText) findViewById(R.id.editText);
         infoTextView = (TextView) findViewById(R.id.infoTextView);
 
@@ -191,6 +194,7 @@ public class calculate extends Activity {
                 computeCalculation();
 
                 infoTextView.setText(infoTextView.getText().toString() + mValueTwo + " = " +mValueOne);
+                Toast.makeText(calculate.this,   " Total =  " +mValueOne, Toast.LENGTH_LONG).show();
                // infoTextView.setText(infoTextView.getText().toString() + decimalFormat.format(mValueOne) + " = " + decimalFormat.format(mValueOne));
                 mValueOne = (float) Double.NaN;
                 CURRENT_ACTION = '0';
@@ -215,7 +219,7 @@ public class calculate extends Activity {
 
 
     private void computeCalculation() {
-        if (!Double.isNaN(mValueOne)) {
+        if (!Double.isNaN(mValueOne) ) {
             mValueTwo = (float) Double.parseDouble(editText.getText().toString());
             editText.setText(null);
 
